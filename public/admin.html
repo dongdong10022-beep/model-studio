@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>管理后台 · MODEL STUDIO</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin">
+
+  <!-- Login -->
+  <div class="login-wrap" id="loginWrap">
+    <div class="modal-card login-card">
+      <h3>管理后台</h3>
+      <p class="sub">MODEL STUDIO 客服与运营中心</p>
+      <div class="field">
+        <label>账号</label>
+        <input class="input" id="loginUser" type="text" placeholder="管理员账号" autocomplete="username" />
+      </div>
+      <div class="field">
+        <label>密码</label>
+        <input class="input" id="loginPass" type="password" placeholder="密码" autocomplete="current-password" />
+      </div>
+      <button class="btn" id="loginBtn">登 录</button>
+      <p class="err" id="loginErr"></p>
+    </div>
+  </div>
+
+  <!-- Admin shell -->
+  <div class="admin-shell" id="shell">
+    <div class="topbar">
+      <div class="brand">MODEL STUDIO · 管理后台</div>
+      <div class="tabs">
+        <button class="tab active" data-tab="chat">客服中心</button>
+        <button class="tab" data-tab="models">模特管理</button>
+        <button class="tab" data-tab="settings">系统设置</button>
+      </div>
+      <button class="logout" id="logoutBtn">退出登录</button>
+    </div>
+
+    <div class="admin-main">
+      <!-- Tab: Chat -->
+      <div class="tab-pane" data-pane="chat">
+        <div class="chat-layout">
+          <div class="visitor-list" id="visitorList">
+            <div class="list-head">在线访客与咨询 <span id="vCount"></span></div>
+            <div style="padding:16px;color:var(--muted);font-size:13px;" id="vEmpty">暂无访客</div>
+          </div>
+          <div class="chat-view" id="chatView">
+            <div class="empty" id="chatEmpty">选择左侧访客查看对话</div>
+            <div class="thread" id="thread" style="display:none;"></div>
+            <div class="tools-row" id="chatTools" style="display:none;">
+              <button id="aToolImage">🖼 图片</button>
+              <button id="aToolLoc">📍 请求位置</button>
+              <button id="aToolLocShow">🗺 打开地图</button>
+            </div>
+            <div class="send-row" id="chatSendRow" style="display:none;">
+              <input id="aInput" type="text" placeholder="输入回复，回发给访客" />
+              <button id="aSend">发送</button>
+            </div>
+          </div>
+          <div class="info-panel" id="infoPanel">
+            <h4>访客信息</h4>
+            <div id="infoEmpty" style="color:var(--muted);font-size:13px;">暂未选择访客</div>
+            <div id="infoBody" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Models -->
+      <div class="tab-pane" data-pane="models" style="display:none;">
+        <div class="mgmt">
+          <h3 style="font-family:var(--serif);">模特资料管理</h3>
+          <p style="color:var(--muted);font-size:13px;margin-top:6px;">点击「编辑」修改价格与资料；锁定状态的模特会要求访客输入访问密码。</p>
+          <table>
+            <thead><tr><th>模特</th><th>国籍</th><th>年龄</th><th>身高</th><th>价格</th><th>状态</th><th></th></tr></thead>
+            <tbody id="modelRows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab: Settings -->
+      <div class="tab-pane" data-pane="settings" style="display:none;">
+        <div class="settings">
+          <h3 style="font-family:var(--serif);">系统设置</h3>
+          <p style="color:var(--muted);font-size:13px;margin-top:6px;">修改后需点击保存；设置会立即生效。</p>
+          <div class="field">
+            <label>模特访问密码（乌克兰 / 欧美籍）</label>
+            <input class="input" id="setCode" type="text" placeholder="访问密码" />
+          </div>
+          <div class="field">
+            <label>管理员账号</label>
+            <input class="input" id="setUser" type="text" placeholder="管理员账号" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label>管理员密码</label>
+            <input class="input" id="setPass" type="password" placeholder="新密码（留空则不修改）" autocomplete="new-password" />
+          </div>
+          <button class="btn" id="saveSettings">保存设置</button>
+          <p class="hint-ok" id="setHint" style="display:none;">✅ 已保存</p>
+          <p class="err" id="setErr"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="aFileImage" accept="image/*" style="display:none;" />
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>
