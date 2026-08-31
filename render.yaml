@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: model-studio
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/models
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "18"
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: LOCKED_ACCESS_CODE
+        value: VIP2026
+      # 管理员密码请到 Render 的 Environment 页手动设置（此值不写入仓库）
+      - key: ADMIN_PASSWORD
+        sync: false
