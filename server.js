@@ -271,6 +271,20 @@ app.post('/api/admin/model/:id', requireAdmin, (req, res) => {
   res.json({ ok: true, model: m });
 });
 
+// Upload model photo (admin)
+app.post('/api/admin/upload-model-photo', requireAdmin, (req, res) => {
+  const { id, data } = req.body;
+  const models = loadModels();
+  const m = models.find(x => x.id === id);
+  if (!m) return res.status(404).json({ ok: false, message: '模特不存在' });
+  if (!data || typeof data !== 'string') return res.status(400).json({ ok: false, message: '缺少图片数据' });
+  const url = saveImageData(data);
+  if (!url) return res.status(400).json({ ok: false, message: '图片数据无效' });
+  m.photo = url;
+  saveModels(models);
+  res.json({ ok: true, photo: url });
+});
+
 // Upload (for both visitor & admin image sending) → returns file url
 app.post('/api/upload', (req, res) => {
   const { data, name } = req.body;
