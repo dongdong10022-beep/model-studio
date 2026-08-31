@@ -1,0 +1,12 @@
+{
+  "siteName": "MODEL STUDIO",
+  "siteTagline": "高端模特经纪 · 影像定制",
+  "admin": {
+    "username": "admin",
+    "password": "change-me-on-deploy"
+  },
+  "lockedModels": {
+    "accessCode": "VIP2026",
+    "enabled": true
+  }
+}
