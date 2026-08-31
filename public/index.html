@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MODEL STUDIO · 高端模特经纪</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-logo">MODEL STUDIO</div>
+    <h1>精品模特经纪<br /><span>影像定制 · 高端品宣</span></h1>
+    <p>甄选中国、乌克兰、欧美籍优质模特，专注商业广告、时尚大片与品牌形象拍摄。价格透明，档期可约。</p>
+  </header>
+
+  <nav class="filter-bar">
+    <button class="chip active" data-filter="all">全部</button>
+    <button class="chip" data-filter="CN">中国籍</button>
+    <button class="chip locked" data-filter="UA">乌克兰籍</button>
+    <button class="chip locked" data-filter="EU">欧美籍</button>
+    <div class="access-hint" id="accessHint">乌克兰 / 欧美籍需访问密码</div>
+  </nav>
+
+  <main class="wrap">
+    <div class="model-grid" id="grid"></div>
+    <div class="empty" id="empty" style="display:none;">暂无符合条件的模特</div>
+  </main>
+
+  <!-- Lock modal -->
+  <div class="modal" id="lockModal">
+    <div class="modal-card">
+      <h3>访问受限</h3>
+      <p class="sub">乌克兰籍 / 欧美籍模特资料需输入访问密码。</p>
+      <div class="field">
+        <label>访问密码</label>
+        <input class="input" id="lockInput" type="password" placeholder="请输入访问密码" autocomplete="off" />
+      </div>
+      <button class="btn" id="lockSubmit">确认访问</button>
+      <p class="err" id="lockError"></p>
+      <p class="hint-ok" id="lockOk" style="display:none;"></p>
+    </div>
+  </div>
+
+  <!-- Detail modal -->
+  <div class="modal" id="detailModal">
+    <div class="modal-card detail-modal">
+      <div class="d-img" id="dImg"></div>
+      <div class="d-info">
+        <h3 class="d-name" id="dName"></h3>
+        <div class="d-ename" id="dEname"></div>
+        <div class="nation" id="dNation" style="position:static;display:inline-block;"></div>
+        <div class="d-rows" id="dRows"></div>
+        <p class="d-desc" id="dDesc"></p>
+        <div class="d-price" id="dPrice"></div>
+        <button class="btn" id="dContract">立即咨询档期</button>
+        <button class="btn ghost" id="dClose" style="margin-top:10px;">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat FAB -->
+  <button class="chat-fab" id="chatFAB" title="在线客服">💬</button>
+
+  <!-- Chat panel -->
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-head">
+      <div>
+        <div class="title">在线客服</div>
+        <div class="sub" id="chatStatus">正在连接…</div>
+      </div>
+      <button class="close" id="chatClose">✕</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-tools">
+      <button id="toolImage">🖼 图片</button>
+      <button id="toolLoc">📍 位置</button>
+      <button id="toolInfo">ℹ 常用</button>
+    </div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="输入消息，回车发送" />
+      <button id="chatSend">➤</button>
+    </div>
+  </div>
+
+  <input type="file" id="fileImage" accept="image/*" style="display:none;" />
+
+  <div class="toast" id="toast"></div>
+
+  <footer>© 2026 MODEL STUDIO · 高端模特经纪 · 影像定制专家</footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
