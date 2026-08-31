@@ -1,0 +1,136 @@
+{
+  "models": [
+    {
+      "id": "lin-xiaoyu",
+      "name": "林晓雨",
+      "englishName": "Lin Xiaoyu",
+      "nationality": "CN",
+      "nationLabel": "中国籍",
+      "flag": "🇨🇳",
+      "age": 23,
+      "height": 168,
+      "figure": "62 / 52 / 88",
+      "style": "清新甜美 / 校园风 / 治愈系",
+      "price": "¥ 3,800 / 半天 · ¥ 6,500 / 全天",
+      "photo": "/img/lin-xiaoyu.svg",
+      "specialties": [
+        "日系清新",
+        "JK制服",
+        "街拍",
+        "居家风"
+      ],
+      "description": "中国新生代人像模特，镜头感极佳，擅长清新自然的风格，适合电商、服装、生活方式类拍摄。性格亲和，配合度高。",
+      "locked": false
+    },
+    {
+      "id": "chen-jiayi",
+      "name": "陈嘉怡",
+      "englishName": "Chen Jiayi",
+      "nationality": "CN",
+      "nationLabel": "中国籍",
+      "flag": "🇨🇳",
+      "age": 26,
+      "height": 172,
+      "figure": "86 / 63 / 90",
+      "style": "轻熟气质 / 商务时尚 / 广告大片",
+      "price": "¥ 5,500 / 半天 · ¥ 9,800 / 全天",
+      "photo": "/img/chen-jiayi.svg",
+      "specialties": [
+        "商业广告",
+        "时装大片",
+        "珠宝首饰",
+        "职场风"
+      ],
+      "description": "气质型女模，多次参与商业广告与时尚杂志拍摄。身高比例优越，表现力强，适合高端商业与品牌宣传。",
+      "locked": false
+    },
+    {
+      "id": "kateryna",
+      "name": "卡捷琳娜",
+      "englishName": "Kateryna",
+      "nationality": "UA",
+      "nationLabel": "乌克兰籍",
+      "flag": "🇺🇦",
+      "age": 22,
+      "height": 175,
+      "figure": "84 / 60 / 89",
+      "style": "欧美立体五官 / 高冷时尚 / T台感",
+      "price": "¥ 8,800 / 半天 · ¥ 15,000 / 全天",
+      "photo": "/img/kateryna.svg",
+      "specialties": [
+        "高定成衣",
+        "时尚大片",
+        "T台走秀",
+        "杂志封面"
+      ],
+      "description": "乌克兰籍模特，立体五官与修长身形兼具，气质高冷时尚，常年合作欧洲品牌，适合国际高端时装与封面拍摄。",
+      "locked": true
+    },
+    {
+      "id": "anastasia",
+      "name": "阿纳斯塔西娅",
+      "englishName": "Anastasia",
+      "nationality": "UA",
+      "nationLabel": "乌克兰籍",
+      "flag": "🇺🇦",
+      "age": 24,
+      "height": 173,
+      "figure": "85 / 61 / 90",
+      "style": "高级感 / 复古油画 / 优雅知性",
+      "price": "¥ 8,500 / 半天 · ¥ 14,500 / 全天",
+      "photo": "/img/anastasia.svg",
+      "specialties": [
+        "复古大片",
+        "香水美妆",
+        "优雅礼服",
+        "艺术写真"
+      ],
+      "description": "乌克兰籍资深模特，自带高级感，擅长复古油画与美妆香水调性，成片质感细腻，广受高端品牌青睐。",
+      "locked": true
+    },
+    {
+      "id": "emily-carter",
+      "name": "艾米莉",
+      "englishName": "Emily Carter",
+      "nationality": "EU",
+      "nationLabel": "欧美籍",
+      "flag": "🇺🇸",
+      "age": 25,
+      "height": 176,
+      "figure": "87 / 62 / 91",
+      "style": "阳光活力 / 运动休闲 / 美式街头",
+      "price": "¥ 9,200 / 半天 · ¥ 16,000 / 全天",
+      "photo": "/img/emily-carter.svg",
+      "specialties": [
+        "运动品牌",
+        "街头潮牌",
+        "生活方式",
+        "外景大片"
+      ],
+      "description": "欧美籍模特，阳光大方，擅长运动与生活类品牌，外景表现力强，充满活力与感染力，成片自然真实。",
+      "locked": true
+    },
+    {
+      "id": "sofia-rossi",
+      "name": "索菲亚",
+      "englishName": "Sofia Rossi",
+      "nationality": "EU",
+      "nationLabel": "欧美籍",
+      "flag": "🇮🇹",
+      "age": 27,
+      "height": 178,
+      "figure": "86 / 62 / 90",
+      "style": "欧洲名模 / 知性干练 / 高端时尚",
+      "price": "¥ 10,000 / 半天 · ¥ 18,000 / 全天",
+      "photo": "/img/sofia-rossi.svg",
+      "specialties": [
+        "高端时装",
+        "腕表珠宝",
+        "汽车广告",
+        "品牌大使"
+      ],
+      "description": "意大利籍名模，气质优雅，长期服务欧洲奢侈品牌，镜头把控精准，适合高端腕表、珠宝、汽车等品宣拍摄。",
+      "locked": true
+    }
+  ]
+}
