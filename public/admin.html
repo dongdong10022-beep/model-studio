@@ -74,7 +74,7 @@
           <h3 style="font-family:var(--serif);">模特资料管理</h3>
           <p style="color:var(--muted);font-size:13px;margin-top:6px;">点击「编辑」修改价格与资料；锁定状态的模特会要求访客输入访问密码。</p>
           <table>
-            <thead><tr><th>模特</th><th>国籍</th><th>年龄</th><th>身高</th><th>价格</th><th>状态</th><th></th></tr></thead>
+            <thead><tr><th>模特</th><th>照片</th><th>国籍</th><th>年龄</th><th>身高</th><th>价格</th><th>状态</th><th>操作</th></tr></thead>
             <tbody id="modelRows"></tbody>
           </table>
         </div>
@@ -106,6 +106,7 @@
   </div>
 
   <input type="file" id="aFileImage" accept="image/*" style="display:none;" />
+  <input type="file" id="aFileModelImage" accept="image/*" style="display:none;" />
 
   <script src="/js/admin.js"></script>
 </body>
