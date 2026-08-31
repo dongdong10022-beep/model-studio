@@ -1,0 +1,13 @@
+{
+  "name": "model-studio",
+  "version": "1.0.0",
+  "description": "Model photography showcase website with customer service chat and admin dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.18.0"
+  }
+}
