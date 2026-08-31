@@ -222,7 +222,8 @@ function appendChatMsg(m, fromServer) {
     el.innerHTML = `<img src="${m.url}" alt="图片"><span class="time">${time}</span>`;
     el.querySelector('img').onclick = (ev)=>openImg(ev.target.src);
   } else if (m.type === 'location') {
-    el.innerHTML = `<div class="loc"><span>📍</span><a href="https://www.google.com/maps?q=${m.lat},${m.lng}" target="_blank">我在这里 (${m.lat.toFixed(5)}, ${m.lng.toFixed(5)})</a></div><span class="time">位置 · ${time}</span>`;
+    const amap = `https://uri.amap.com/marker?position=${m.lng},${m.lat}&name=${encodeURIComponent('我的位置')}`;
+    el.innerHTML = `<div class="loc"><span>📍</span><a href="${amap}" target="_blank">我在这里 (${m.lat.toFixed(5)}, ${m.lng.toFixed(5)})</a></div><span class="time">位置 · ${time}</span>`;
   }
   body.appendChild(el);
   body.scrollTop = body.scrollHeight;
