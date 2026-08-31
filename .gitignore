@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+
+# runtime data (regenerated on the fly; do not commit)
+data/visitors.json
+data/messages/
+data/uploads/
+
+# secrets & tunnel keys
+.serveo_key
+.serveo_key.pub
+tools/
+ngrok.zip
+ngrok.exe
+
+# scratch & logs
+.cowork-temp/
+*.log
+lt-out.log
+lt-err.log
+sv*.log
+sv2*.log
+sv3*.log
