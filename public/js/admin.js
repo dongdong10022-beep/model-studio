@@ -9,6 +9,11 @@ let threadMessages = [];
 
 const $ = (s) => document.querySelector(s);
 
+// 高德地图分享链接（经度在前：position=lng,lat）
+function amapUrl(lat, lng, name) {
+  return `https://uri.amap.com/marker?position=${lng},${lat}&name=${encodeURIComponent(name || '我的位置')}`;
+}
+
 function toast(text) {
   const t = $('#toast');
   if (!t) { alert(text); return; }
@@ -167,7 +172,7 @@ function msgEl(m) {
     el.innerHTML = `<img src="${m.url}" alt="图片"><span class="time">${t}</span>`;
     el.querySelector('img').onclick = (ev)=>{ const w=window.open('','_blank'); w.document.write(`<img src="${ev.target.src}" style="max-width:100vw">`); };
   } else if (m.type==='location') {
-    el.innerHTML = `<div class="loc"><span>📍</span><a href="https://www.google.com/maps?q=${m.lat},${m.lng}" target="_blank">访客位置 (${m.lat.toFixed(5)}, ${m.lng.toFixed(5)})</a></div><span class="time">位置 · ${t}</span>`;
+    el.innerHTML = `<div class="loc"><span>📍</span><a href="${amapUrl(m.lat, m.lng, '访客位置')}" target="_blank">访客位置 (${m.lat.toFixed(5)}, ${m.lng.toFixed(5)})</a></div><span class="time">位置 · ${t}</span>`;
   }
   return el;
 }
@@ -179,7 +184,7 @@ function renderInfo() {
   $('#infoEmpty').style.display='none';
   $('#infoBody').style.display='block';
   const dev = v.device || {};
-  const mapLink = v.location ? `https://www.google.com/maps?q=${v.location.lat},${v.location.lng}` : '';
+  const mapLink = v.location ? amapUrl(v.location.lat, v.location.lng, '访客位置') : '';
   $('#infoBody').innerHTML = `
     <div class="kv"><div class="k">访客标识</div><div class="v">${v.id||'-'}</div></div>
     <div class="kv"><div class="k">IP 地址</div><div class="v">${v.ip||'-'}</div></div>
@@ -245,7 +250,7 @@ $('#aToolLoc').addEventListener('click', ()=>{
 
 $('#aToolLocShow').addEventListener('click', ()=>{
   const v = visitors.find(x=>x.id===currentVisitorId);
-  if (v && v.location) window.open(`https://www.google.com/maps?q=${v.location.lat},${v.location.lng}`,'_blank');
+  if (v && v.location) window.open(amapUrl(v.location.lat, v.location.lng, '访客位置'),'_blank');
   else toast('该访客暂未上报位置');
 });
 
@@ -263,15 +268,40 @@ function renderModelRows() {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td><b>${m.name}</b> <span style="color:var(--muted);font-size:12px;">${m.englishName}</span></td>
+      <td><img src="${m.photo}" alt="" style="width:44px;height:58px;object-fit:cover;border-radius:6px;border:1px solid var(--line);cursor:pointer;" onerror="this.src='/img/${m.id}.svg'"> <span class="edit-link" data-upload="${m.id}">📷传照</span></td>
       <td>${m.flag} ${m.nationLabel}</td>
       <td>${m.age}</td><td>${m.height}</td>
       <td style="color:var(--gold2);">${m.price}</td>
       <td>${m.locked ? '<span class="badge-lock">🔒 需密码</span>' : '<span class="badge-free">公开</span>'}</td>
       <td><span class="edit-link" data-id="${m.id}">编辑</span></td>`;
-    tr.querySelector('.edit-link').onclick = () => editModel(m);
+    tr.querySelector('.edit-link[data-id]').onclick = () => editModel(m);
+    tr.querySelector('[data-upload]').onclick = (e) => { e.stopPropagation(); uploadModelPhoto(m.id); };
     tbody.appendChild(tr);
   });
 }
+
+function uploadModelPhoto(id) {
+  const input = $('#aFileModelImage');
+  input.dataset.modelid = id;
+  input.click();
+}
+
+$('#aFileModelImage').addEventListener('change', () => {
+  const input = $('#aFileModelImage');
+  const f = input.files[0];
+  if (!f) return;
+  const id = input.dataset.modelid;
+  if (!id) return;
+  const reader = new FileReader();
+  reader.onload = async () => {
+    if (reader.result.length > 8 * 1024 * 1024) { toast('图片过大，请压缩后再上传'); return; }
+    const d = await api('/api/admin/upload-model-photo', { method: 'POST', body: JSON.stringify({ id, data: reader.result }) });
+    if (d.ok) { toast('照片已更新 ✅'); await loadModelsMgmt(); }
+    else toast(d.message || '上传失败');
+  };
+  reader.readAsDataURL(f);
+  input.value = '';
+});
 function editModel(m) {
   const price = prompt('修改拍摄价格：', m.price);
   if (price === null) return;
